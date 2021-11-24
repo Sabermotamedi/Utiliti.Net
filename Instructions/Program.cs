@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Utilities
+namespace Instructions
 {
     class Program
     {
