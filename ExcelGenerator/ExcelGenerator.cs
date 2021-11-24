@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 
-namespace Utiliti.Net.ExcelGenerator
+namespace Utilities.ExcelGenerator
 {
    
  public class ExcelGenerator<T>

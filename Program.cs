@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Utiliti.Net
+namespace Utilities
 {
     class Program
     {
