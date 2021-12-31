@@ -5,7 +5,6 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using HtmlAgilityPack;
 
 namespace Utilities
 {
@@ -230,72 +229,73 @@ namespace Utilities
             return result;
         }
 
-        public static string RemoveStylesTag(this string source)
-        {
-            if (string.IsNullOrWhiteSpace(source))
-                return "";
+        //public static string RemoveStylesTag(this string source)
+        //{
+        //    if (string.IsNullOrWhiteSpace(source))
+        //        return "";
 
-            HtmlDocument doc = new HtmlDocument();
-            doc.LoadHtml(source);
-            // string cleaned = new Regex("style=\"[^\"]*\"").Replace(source, "");
-            //return cleaned;
-            if (doc.DocumentNode != null)
-            {
-                doc.DocumentNode.RemoveTag("//@style", "style");
-                doc.DocumentNode.RemoveTag("//font[@face]", "face");
-                //doc.DocumentNode.RemoveTag("//@width", "width");
-                if (doc.DocumentNode.InnerHtml != null && doc.DocumentNode.InnerHtml.Contains("table"))
-                {
-                    var s = doc.DocumentNode.SelectNodes("//table");
+        //    HtmlDocument doc = new HtmlDocument();
+        //    doc.LoadHtml(source);
+        //    // string cleaned = new Regex("style=\"[^\"]*\"").Replace(source, "");
+        //    //return cleaned;
+        //    if (doc.DocumentNode != null)
+        //    {
+        //        doc.DocumentNode.RemoveTag("//@style", "style");
+        //        doc.DocumentNode.RemoveTag("//font[@face]", "face");
+        //        //doc.DocumentNode.RemoveTag("//@width", "width");
+        //        if (doc.DocumentNode.InnerHtml != null && doc.DocumentNode.InnerHtml.Contains("table"))
+        //        {
+        //            var s = doc.DocumentNode.SelectNodes("//table");
 
-                    if (s != null && s.Count > 0)
-                        foreach (var item in s)
-                        {
-                            //var h = item.Attributes["align"].Value;
-                            //if (h=="center")
-                            //{
-                            //    item.Attributes.Add("class", "tablePart");
+        //            if (s != null && s.Count > 0)
+        //                foreach (var item in s)
+        //                {
+        //                    //var h = item.Attributes["align"].Value;
+        //                    //if (h=="center")
+        //                    //{
+        //                    //    item.Attributes.Add("class", "tablePart");
 
-                            //}
-                            //var htmlResult = item.OuterHtml;
+        //                    //}
+        //                    //var htmlResult = item.OuterHtml;
 
-                            if (item.ParentNode != null)
-                                item.ParentNode.InnerHtml = "\r\n<div class=\"tablePart\">\r\n"
-                                + item.OuterHtml ?? "" +
-                                                            "\r\n</div>\r\n";
+        //                    if (item.ParentNode != null)
+        //                        item.ParentNode.InnerHtml = "\r\n<div class=\"tablePart\">\r\n"
+        //                        + item.OuterHtml ?? "" +
+        //                                                    "\r\n</div>\r\n";
 
-                        }
-                }
-                if (doc.DocumentNode.InnerHtml != null && doc.DocumentNode.InnerHtml.Contains("img"))
-                {
-                    var s = doc.DocumentNode.SelectNodes("//img[@src]");
-                    foreach (HtmlNode item in s)
-                    {
-                        var src = item.Attributes["src"].Value;
-                        src = "http://cmr.seo.ir" + src;
-                        //  src =item.Attributes["src"].Value.Replace("/Upload", "http://cmr.seo.ir/Upload");
-                        item.SetAttributeValue("src", src);
-                        item.SetAttributeValue("class", "img-responsive");
-                    }
-                }
-                if (doc.DocumentNode.InnerHtml != null)
-                {
-                    return doc.DocumentNode?.InnerHtml;
-                }
-            }
-            return source;
-        }
-        public static void RemoveTag(this HtmlNode node, string pattern, string attributeName)
-        {
-            var elementsWithStyleAttribute = node.SelectNodes(pattern);
-            if (elementsWithStyleAttribute != null)
-            {
-                foreach (var item in elementsWithStyleAttribute)
-                {
-                    item.Attributes[attributeName].Remove();
-                }
-            }
-        }
+        //                }
+        //        }
+        //        if (doc.DocumentNode.InnerHtml != null && doc.DocumentNode.InnerHtml.Contains("img"))
+        //        {
+        //            var s = doc.DocumentNode.SelectNodes("//img[@src]");
+        //            foreach (HtmlNode item in s)
+        //            {
+        //                var src = item.Attributes["src"].Value;
+        //                src = "http://cmr.seo.ir" + src;
+        //                //  src =item.Attributes["src"].Value.Replace("/Upload", "http://cmr.seo.ir/Upload");
+        //                item.SetAttributeValue("src", src);
+        //                item.SetAttributeValue("class", "img-responsive");
+        //            }
+        //        }
+        //        if (doc.DocumentNode.InnerHtml != null)
+        //        {
+        //            return doc.DocumentNode?.InnerHtml;
+        //        }
+        //    }
+        //    return source;
+        //}
+
+        //public static void RemoveTag(this HtmlNode node, string pattern, string attributeName)
+        //{
+        //    var elementsWithStyleAttribute = node.SelectNodes(pattern);
+        //    if (elementsWithStyleAttribute != null)
+        //    {
+        //        foreach (var item in elementsWithStyleAttribute)
+        //        {
+        //            item.Attributes[attributeName].Remove();
+        //        }
+        //    }
+        //}
     }
 
 }
