@@ -8,6 +8,10 @@ namespace Utilities.Attributes
     {
         public string EnglishDescription { get; private set; }
 
+        /// <summary>
+        /// Add more Attribute
+        /// </summary>
+        /// <param name="description"></param>
         public EnglishDescriptionAttribute(string description)
         {
             EnglishDescription = description;

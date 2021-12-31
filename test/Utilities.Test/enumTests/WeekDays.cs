@@ -2,24 +2,32 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using Utilities.Attributes;
 
 namespace Utilities.Test.enumTests
 {
     public enum WeekDays
     {
-        [Description("شنبه")]
-        Saturday = 0,
-        [Description("یک شنبه")]
-        Sunday = 1,
         [Description("دوشنبه")]
-        Monday = 2,
+        [EnglishDescription("Monday")]
+        Monday = 0,
         [Description("سه شنبه")]
-        Tuesday = 3,
+        [EnglishDescription("Tuesday")]
+        Tuesday = 1,
         [Description("چهار شنبه")]
-        Wednesday = 4,
+        [EnglishDescription("Wednesday")]
+        Wednesday = 2,
         [Description("پنج شنبه")]
-        Thursday = 5,
+        [EnglishDescription("Thursday")]
+        Thursday = 3,
         [Description("جمعه")]
-        Friday = 6       
+        [EnglishDescription("Friday")]
+        Friday = 4,
+        [Description("شنبه")]
+        [EnglishDescription("Saturday")]
+        Saturday = 5,
+        [Description("یک شنبه")]
+        [EnglishDescription("Sunday")]
+        Sunday = 6
     }
 }

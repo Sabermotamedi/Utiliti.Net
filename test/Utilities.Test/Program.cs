@@ -1,4 +1,5 @@
 ﻿using System;
+using Utilities.Test.enumTests;
 
 namespace Utilities.Test
 {
@@ -6,7 +7,11 @@ namespace Utilities.Test
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            EnumTests enumTests = new EnumTests();        
+            
+            Console.WriteLine(enumTests.GetEnumDescription());
+            Console.WriteLine(enumTests.GetEnumEnglishDescription());
+
         }
     }
 }
